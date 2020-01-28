@@ -16,7 +16,7 @@ public class Url {
         return new Url();
     }
 
-    private URIBuilder uriBuilder;
+    private URIBuilder uriBuilder = new URIBuilder();
 
     public Url setScheme(String scheme) {
         uriBuilder.setScheme(scheme);
