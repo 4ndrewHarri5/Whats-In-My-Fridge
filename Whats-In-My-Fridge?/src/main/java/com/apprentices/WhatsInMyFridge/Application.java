@@ -3,11 +3,17 @@ package com.apprentices.WhatsInMyFridge;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class Application {
+import java.net.URISyntaxException;
 
-	public static void main(String[] args) {
+@SpringBootApplication
+public class Application{
+
+	public static void main(String[] args) throws URISyntaxException {
 		SpringApplication.run(Application.class, args);
+
+		UrlCreator urlCreator = new UrlCreator();
+		System.out.println("response " + urlCreator.createURL());
+
 	}
 
 }
