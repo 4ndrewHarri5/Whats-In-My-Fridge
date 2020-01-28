@@ -1,10 +1,8 @@
 package com.apprentices.WhatsInMyFridge.Web.Application;
 
-import com.apprentices.WhatsInMyFridge.Enitiy.Recipie;
+import com.apprentices.WhatsInMyFridge.Entity.Recipe;
 import com.apprentices.WhatsInMyFridge.Service.CookbookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,7 @@ public class CookbookController {
 
     @GetMapping("/{ingredients}")
     public @ResponseBody
-    List<Recipie> getRecipesByIngredients(@PathVariable String ingredients) throws IOException {
+    List<Recipe> getRecipesByIngredients(@PathVariable String ingredients) throws IOException {
         return cookbookService.getRecipesFromIngredients(ingredients);
     }
 

@@ -1,17 +1,7 @@
 package com.apprentices.WhatsInMyFridge;
 
-import com.apprentices.WhatsInMyFridge.Enitiy.CookBook;
-import com.apprentices.WhatsInMyFridge.Enitiy.Recipie;
-import com.apprentices.WhatsInMyFridge.Service.CookbookService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @SpringBootApplication
 public class Application{

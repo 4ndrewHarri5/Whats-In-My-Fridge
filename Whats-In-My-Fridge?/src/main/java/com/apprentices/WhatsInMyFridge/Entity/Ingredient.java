@@ -1,4 +1,4 @@
-package com.apprentices.WhatsInMyFridge.Enitiy;
+package com.apprentices.WhatsInMyFridge.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

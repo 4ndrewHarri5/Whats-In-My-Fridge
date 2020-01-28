@@ -1,4 +1,4 @@
-package com.apprentices.WhatsInMyFridge.Enitiy;
+package com.apprentices.WhatsInMyFridge.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -7,13 +7,13 @@ import java.util.List;
 public class CookBook {
 
     @JsonProperty("cookbook")
-    private List<Recipie> recipeList;
+    private List<Recipe> recipeList;
 
-    public List<Recipie> getRecipeList() {
+    public List<Recipe> getRecipeList() {
         return recipeList;
     }
 
-    public void setRecipeList(List<Recipie> recipeList) {
+    public void setRecipeList(List<Recipe> recipeList) {
         this.recipeList = recipeList;
     }
 }

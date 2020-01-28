@@ -1,6 +1,6 @@
 package com.apprentices.WhatsInMyFridge.Service;
 
-import com.apprentices.WhatsInMyFridge.Enitiy.Recipie;
+import com.apprentices.WhatsInMyFridge.Entity.Recipe;
 import com.apprentices.WhatsInMyFridge.Properties;
 import com.apprentices.WhatsInMyFridge.Url;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +13,7 @@ import java.util.*;
 @Service
 public class CookbookService {
 
-    public List<Recipie> getRecipesFromIngredients(String ingredients) throws IOException {
+    public List<Recipe> getRecipesFromIngredients(String ingredients) throws IOException {
 
         String API_KEY = Properties.API_KEY;
 
@@ -36,7 +36,7 @@ public class CookbookService {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        return Arrays.asList(objectMapper.readValue(JsonResponse, Recipie[].class));
+        return Arrays.asList(objectMapper.readValue(JsonResponse, Recipe[].class));
 
     }
 
