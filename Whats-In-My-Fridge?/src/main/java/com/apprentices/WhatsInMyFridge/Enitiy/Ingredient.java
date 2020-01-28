@@ -1,21 +1,38 @@
 package com.apprentices.WhatsInMyFridge.Enitiy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Ingredient {
+
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("amount")
     private double amount;
+    @JsonProperty("unit")
     private String unit;
+    @JsonProperty("unitLong")
     private String unitLong;
+    @JsonProperty("unitShort")
     private String unitShort;
+    @JsonProperty("aisle")
     private String aisle;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("original")
     private String original;
+    @JsonProperty("originalString")
     private String originalString;
+    @JsonProperty("originalName")
     private String originalName;
+    @JsonProperty("metaInformation")
     private List<String> metaInformation;
+    @JsonProperty("meta")
     private List<String> meta;
+    @JsonProperty("extendedName")
     private String extendedName;  //optional
+    @JsonProperty("image")
     private String image;
 
     public int getId() {

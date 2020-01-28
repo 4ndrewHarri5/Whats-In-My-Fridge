@@ -1,18 +1,30 @@
 package com.apprentices.WhatsInMyFridge.Enitiy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Recipie {
 
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("image")
     private String image;
+    @JsonProperty("imageType")
     private String imageType;
+    @JsonProperty("usedIngredientCount")
     private int usedIngredientCount;
+    @JsonProperty("missedIngredientCount")
     private int missedIngredientCount;
+    @JsonProperty("missedIngredients")
     private List<Ingredient> missedIngredients;
+    @JsonProperty("usedIngredients")
     private List<Ingredient> usedIngredients;
-    private List<Ingredient> unUsedIngredients;
+    @JsonProperty("unusedIngredients")
+    private List<Ingredient> unusedIngredients;
+    @JsonProperty("likes")
     private int likes;
 
     public int getId() {
@@ -80,11 +92,11 @@ public class Recipie {
     }
 
     public List<Ingredient> getUnUsedIngredients() {
-        return unUsedIngredients;
+        return unusedIngredients;
     }
 
-    public void setUnUsedIngredients(List<Ingredient> unUsedIngredients) {
-        this.unUsedIngredients = unUsedIngredients;
+    public void setUnUsedIngredients(List<Ingredient> unusedIngredients) {
+        this.unusedIngredients = unusedIngredients;
     }
 
     public int getLikes() {
