@@ -3,6 +3,10 @@ import classes from './App.css';
 import Recipe from './Recipe/Recipe';
 import axios from 'axios';
 
+
+const LOCAL_API = 'http://localhost:8080'
+// const COOKBOOK_API = `${LOCAL_API}/cookbook/${INGREDIENT}`
+
 class App extends Component{
 
   state = {
@@ -466,9 +470,10 @@ class App extends Component{
   };
 
   componentDidMount() {
-      axios.get(`https://localhost:8080/cookbook/apple`)
+      axios.get(`${LOCAL_API}/cookbook/${this.state.ingredientToSearch}`)
           .then(response => {
               console.log(response.data)
+              this.setState({recipes: response.data})
           })
           .catch(error => {
               console.log(error)
