@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Recipe from './Recipe/Recipe';
+import axios from 'axios';
 
 class App extends Component{
 
   state = {
+      // test data to show recipies. JSON
     recipes: [
       {
           "id": 661447,
@@ -459,22 +461,56 @@ class App extends Component{
           "likes": 0
       }
   ],
-    showRecipes: false
+    showRecipes: false,
+    ingredientToSearch: " "
   };
 
+  componentDidMount() {
+      axios.get(`https://localhost:8080/cookbook/apple`)
+          .then(response => {
+              console.log(response.data)
+          })
+          .catch(error => {
+              console.log(error)
+          })
+  }
+
+    //When click on title of recipe deletes from list/Render
   deleteRecipeHandler = (index) => {
     const recipes = [...this.state.recipes]
     recipes.splice(index, 1);
     this.setState({recipes: recipes})
-  }
+  };
 
-  toggleRecipesHandler = () => {
-    const currentShow = this.state.showRecipes
-    this.setState({
-      showRecipes: !currentShow
-    });
-  }
+  //Switch to show or not show Recipe.
+    toggleRecipesHandler = () => {
+        const currentShow = this.state.showRecipes
+        this.setState({
+            showRecipes: !currentShow
+        })
+    };
 
+    // OnClick Send ingredients. Action this.
+    sendIngredients = () => {
+
+
+
+        // this.state.ingredientToSearch;
+
+    };
+
+
+    // for box text looking at
+    handleIngredientChange(event) {
+        // this.setState({title: event.target.value})
+        this.setState({ingredientToSearch: event.target.value})
+    };
+
+    clickMe(event){
+        this.componentDidMount()
+    }
+
+    // not sure what this is for yet?
   nameChangedHandler = (event, id) => {
     const recipeIndex = this.state.recipes.findIndex(p => {
       return p.uID === id;
@@ -482,21 +518,20 @@ class App extends Component{
     const recipe = {
       ...this.state.recipes[recipeIndex]
     };
-
     recipe.name = event.target.value;
-
     //now update array at index
     const recipes = [...this.state.recipes];
     recipes[recipeIndex] = recipe;
 
     //then set the state
     this.setState({recipes: recipes});
-  }
+  };
 
   render() {
     let recipes = null;
     let btnClass = '';
 
+    // If showReciipies is true then action below to display
     if (this.state.showRecipes) {
       recipes = (
         <div>
@@ -517,6 +552,8 @@ class App extends Component{
 
     }
 
+
+
     const assignedClasses = [];
     if (this.state.recipes.length <= 2) {
       assignedClasses.push(classes.red); // classes = ['red']
@@ -525,15 +562,34 @@ class App extends Component{
       assignedClasses.push(classes.bold); //classes = ['red', 'bold']
     }
 
+    // what looking at + buttons.
     return(
       <div className={classes.App}>
         <h1>Whats In My Fridge?</h1>
-        <input type="text" value="enter ingredients" />
+        <input type="text" name="inputIngredient" value={this.state.title}
+           onChange={this.handleIngredientChange.bind(this)}/>
         <p className={assignedClasses.join(' ')}></p>
+          <button
+              className={btnClass}
+              onClick={this.sendIngredients}
+
+          >Send Ingredients
+          </button>
+
+
+
+          <button onClick={this.clickMe.bind(this)}
+          >On Click
+          </button>
+
+
         <button
           className={btnClass}
           onClick={this.toggleRecipesHandler}
-        >Get Recipes</button>
+        >Get Recipes
+        </button>
+          <h2>Ingredients?</h2>
+          <i>{this.state.ingredientToSearch}</i>
         {recipes}
       </div> 
     );
