@@ -2,7 +2,6 @@ package com.apprentices.WhatsInMyFridge;
 
 import org.apache.http.client.utils.URIBuilder;
 import org.springframework.web.reactive.function.client.WebClient;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 

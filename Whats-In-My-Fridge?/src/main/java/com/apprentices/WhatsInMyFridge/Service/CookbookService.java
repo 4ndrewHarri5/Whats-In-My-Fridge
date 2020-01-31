@@ -5,7 +5,6 @@ import com.apprentices.WhatsInMyFridge.Properties;
 import com.apprentices.WhatsInMyFridge.Url;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
