@@ -4,6 +4,7 @@ import com.apprentices.WhatsInMyFridge.Entity.Recipe;
 import com.apprentices.WhatsInMyFridge.Properties;
 import com.apprentices.WhatsInMyFridge.Url;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -12,27 +13,14 @@ import java.util.*;
 @Service
 public class CookbookService {
 
+    private UrlService urlService;
+
+    public CookbookService(UrlService urlService) {
+        this.urlService = urlService;
+    }
+
     public List<Recipe> getRecipesFromIngredients(String ingredients) throws IOException {
-
-        String API_KEY = Properties.API_KEY;
-
-        String JsonResponse = "";
-
-        try {
-            JsonResponse = Url.builder()
-                    .setScheme("https")
-                    .setHost("api.spoonacular.com")
-                    .setPath("/recipes/findByIngredients")
-                    .addParameter("apiKey", API_KEY)
-                    .addParameter("ingredients", ingredients)
-                    .addParameter("number", "1")
-                    .addParameter("ranking", "1")
-                    .addParameter("ignorePantry", "false")
-                    .getResponseFromSpoonacular();
-        }catch(URISyntaxException e){
-            e.printStackTrace();
-        }
-
+        String JsonResponse = urlService.getJSONFromSpoonacular(ingredients);
         ObjectMapper objectMapper = new ObjectMapper();
 
         return Arrays.asList(objectMapper.readValue(JsonResponse, Recipe[].class));
