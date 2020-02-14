@@ -1,17 +1,19 @@
 package com.apprentices.WhatsInMyFridge;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+@Component
 public class Url {
 
     private Url() {
 
     }
 
-    public static Url builder() {
+    public Url builder() {
         return new Url();
     }
 

@@ -22,11 +22,7 @@ class CookbookServiceTest {
         givenListOfIngredients();
         givenJsonResponseFromSpoonacular();
         whenGetRecipesFromInitialIngredients();
-        assertEquals(1, recipesFromIngredients.size());
-    }
-
-    private void whenGetRecipesFromInitialIngredients() throws IOException {
-        recipesFromIngredients = victim.getRecipesFromIngredients(inputIngredient);
+        thenListContainsRecipes();
     }
 
     private void givenListOfIngredients() {
@@ -42,9 +38,28 @@ class CookbookServiceTest {
                 "\"missedIngredientCount\":0," +
                 "\"missedIngredients\":[]," +
                 "\"usedIngredients\":[{\"id\":1123,\"amount\":12.0,\"unit\":\"\",\"unitLong\":\"\",\"unitShort\":\"\",\"aisle\":" +
-                "\"Milk, Eggs, Other Dairy\",\"name\":\"eggs\",\"original\":\"12 Eggs\",\"originalString\":\"12 Eggs\",\"originalName\":\"Eggs\"," +
-                "\"metaInformation\":[],\"meta\":[],\"image\":\"https://spoonacular.com/cdn/ingredients_100x100/egg.png\"}]," +
+                    "\"Milk, Eggs, Other Dairy\",\"name\":\"eggs\",\"original\":\"12 Eggs\",\"originalString\":\"12 Eggs\",\"originalName\":\"Eggs\"," +
+                    "\"metaInformation\":[],\"meta\":[],\"image\":\"https://spoonacular.com/cdn/ingredients_100x100/egg.png\"}]," +
+                "\"unusedIngredients\":[],\"likes\":1}," +
+                "{\"id\":1064833," +
+                "\"title\":\"Perfect Instant Pot Hard Boiled Eggs\"," +
+                "\"image\":\"https://spoonacular.com/recipeImages/1064833-312x231.jpg\"," +
+                "\"imageType\":\"jpg\"," +
+                "\"usedIngredientCount\":1," +
+                "\"missedIngredientCount\":0," +
+                "\"missedIngredients\":[]," +
+                "\"usedIngredients\":[{\"id\":1123,\"amount\":12.0,\"unit\":\"\",\"unitLong\":\"\",\"unitShort\":\"\",\"aisle\":" +
+                    "\"Milk, Eggs, Other Dairy\",\"name\":\"eggs\",\"original\":\"12 Eggs\",\"originalString\":\"12 Eggs\",\"originalName\":\"Eggs\"," +
+                    "\"metaInformation\":[],\"meta\":[],\"image\":\"https://spoonacular.com/cdn/ingredients_100x100/egg.png\"}]," +
                 "\"unusedIngredients\":[],\"likes\":1}]";
         when(urlServiceMock.getJSONFromSpoonacular(inputIngredient)).thenReturn(responseJSON);
+    }
+
+    private void whenGetRecipesFromInitialIngredients() throws IOException {
+        recipesFromIngredients = victim.getRecipesFromIngredients(inputIngredient);
+    }
+
+    private void thenListContainsRecipes() {
+        assertEquals(2, recipesFromIngredients.size());
     }
 }

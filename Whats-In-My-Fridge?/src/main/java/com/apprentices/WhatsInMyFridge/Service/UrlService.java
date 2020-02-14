@@ -8,11 +8,16 @@ import java.net.URISyntaxException;
 
 @Service
 public class UrlService {
+    private Url url;
+
+    public UrlService(Url url) {
+        this.url = url;
+    }
 
     public String getJSONFromSpoonacular(String ingredients) {
         String JsonResponse = "";
         try {
-            JsonResponse = Url.builder()
+            JsonResponse = url.builder()
                     .setScheme("https")
                     .setHost("api.spoonacular.com")
                     .setPath("/recipes/findByIngredients")
