@@ -15,7 +15,10 @@ import java.util.List;
 @RequestMapping("/cookbook")
 public class CookbookController {
 
-    @Autowired
+    public CookbookController(CookbookService cookbookService) {
+        this.cookbookService = cookbookService;
+    }
+
     private CookbookService cookbookService;
 
     @GetMapping("/{ingredients}")

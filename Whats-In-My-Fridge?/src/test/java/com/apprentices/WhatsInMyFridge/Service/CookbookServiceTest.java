@@ -16,11 +16,10 @@ class CookbookServiceTest {
     private String inputIngredient;
     private List<Recipe> recipesFromIngredients;
 
-
     @Test
     void getRecipesFromIngredients() throws IOException {
         givenListOfIngredients();
-        givenJsonResponseFromSpoonacular();
+        givenJsonResponseFromUrlServiceMock();
         whenGetRecipesFromInitialIngredients();
         thenListContainsRecipes();
     }
@@ -29,7 +28,7 @@ class CookbookServiceTest {
         inputIngredient = "eggs";
     }
 
-    private void givenJsonResponseFromSpoonacular(){
+    private void givenJsonResponseFromUrlServiceMock(){
         String responseJSON = "[{\"id\":1064833," +
                 "\"title\":\"Perfect Instant Pot Hard Boiled Eggs\"," +
                 "\"image\":\"https://spoonacular.com/recipeImages/1064833-312x231.jpg\"," +
