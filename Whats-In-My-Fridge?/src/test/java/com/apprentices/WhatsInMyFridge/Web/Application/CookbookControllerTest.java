@@ -2,7 +2,6 @@ package com.apprentices.WhatsInMyFridge.Web.Application;
 
 import com.apprentices.WhatsInMyFridge.Entity.Recipe;
 import com.apprentices.WhatsInMyFridge.Service.CookbookService;
-import com.apprentices.WhatsInMyFridge.Service.UrlService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
